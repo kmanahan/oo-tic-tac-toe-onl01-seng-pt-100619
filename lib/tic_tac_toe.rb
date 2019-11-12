@@ -60,11 +60,10 @@ class TicTacToe
     user_input = gets.strip
     index = input_to_index(user_input)
     if valid_move?(index) 
-      move(index)
+      move(index, player) 
       display_board
-    else
-      puts "Try Again and choose a position, 1-9"
-      user_input = gets.strip
+    else 
+      turn
     end
     end
     
