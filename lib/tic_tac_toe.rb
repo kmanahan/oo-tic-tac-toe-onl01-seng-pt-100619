@@ -26,6 +26,55 @@ class TicTacToe
   end
   
   def move(index,token="X") 
-    index = @board 
+    @board[index] = token
   end 
-end 
+  
+  def position_taken?(index)
+    spot = nil 
+    if (@board[index] ==  " " || @board[index] == "" || @board[index] == nil)
+      spot = false 
+    else
+     spot = true
+    end
+    spot
+  end 
+  
+  def valid_move?(index)
+    if !position_taken?(index) && index < 9
+      true
+    else 
+      false || nil 
+    end
+  end 
+   def turn_count
+    @board.count{|token| token == "X" || token == "O"}
+  end
+  
+  def current_player
+  turn_count % 2 == 0 ? "X" : "O"
+  end
+  
+  def turn 
+    puts "Choose a position, 1-9"
+    player = current_player
+    user_input = gets.strip
+    index = input_to_index(user_input)
+    if valid_move?(index) 
+      move(index)
+      display_board
+    else
+      puts "Try Again and choose a position, 1-9"
+      user_input = gets.strip
+    end
+    end
+    
+    def won? 
+      combo = WIN_COMBINATIONS
+      
+      combo.each{|size| size.to_a }
+    # else 
+    #   false || nil
+    #   end 
+    end
+    
+  end 
