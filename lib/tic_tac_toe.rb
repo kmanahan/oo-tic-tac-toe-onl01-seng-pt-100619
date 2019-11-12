@@ -40,10 +40,10 @@ class TicTacToe
   end 
   
   def valid_move?(index)
-    if !position_taken?(index) && index < 9
+    if !position_taken?(index) && index < 9 && index >= 0
       true
     else 
-      false || nil 
+      false 
     end
   end 
    def turn_count
@@ -68,12 +68,20 @@ class TicTacToe
     end
     
     def won? 
-      combo = WIN_COMBINATIONS
+      WIN_COMBINATIONS.each do |combo|
+        win_index_1 = combo[0]
+        win_index_2 = combo[1]
+        win_index_3 = combo[2]
       
-      combo.each{|size| size.to_a }
-    # else 
-    #   false || nil
-    #   end 
+        position_1 = @board[win_index_1] # load the value of the board at win_index_1
+        position_2 = @board[win_index_2] # load the value of the board at win_index_2
+        position_3 = @board[win_index_3]
+        
+        if position_1 == position_2 && position_2 == position_3
+        return combo
+        end 
+      end
+       false
     end
     
   end 
