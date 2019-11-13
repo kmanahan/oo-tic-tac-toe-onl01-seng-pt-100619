@@ -115,13 +115,24 @@ class TicTacToe
 end
 
   def play
+<<<<<<< HEAD
   turn
+=======
+  if !over?
+    turn
+  else 
+   play
+  end
+>>>>>>> 5495cf6479a9a0504a7f1e5c9d1782dff5842cfe
   if won?
     puts "Winner!"
   elsif draw?
     puts "Draw!"
   end
+<<<<<<< HEAD
   over?
+=======
+>>>>>>> 5495cf6479a9a0504a7f1e5c9d1782dff5842cfe
 end
 
 end 
